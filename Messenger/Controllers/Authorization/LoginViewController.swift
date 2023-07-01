@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         title = "Войти"
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Войти",
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Регистрация",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didTapRegister)

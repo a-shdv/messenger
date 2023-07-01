@@ -73,6 +73,11 @@ class LoginViewController: UIViewController {
                                                             action: #selector(didTapRegister)
         )
         
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        emailField.delegate = self
+        passwordField.delegate = self
+        
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
@@ -105,10 +110,47 @@ class LoginViewController: UIViewController {
                                    height: 52)
     }
     
+    @objc private func loginButtonTapped() {
+//        emailField.resignFirstResponder()
+//        passwordField.resignFirstResponder()
+        
+        guard let email = emailField.text,
+              let password = passwordField.text,
+              !email.isEmpty, !password.isEmpty
+        else {
+            alertUserLoginError()
+            return
+        }
+        
+        
+        
+    }
+    
+    func alertUserLoginError() {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: "Пожалуйста, заполните все поля",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
     @objc private func didTapRegister() {
         let registerVC = RegisterViewController()
         registerVC.title = "Зарегистрироваться"
         navigationController?.pushViewController(registerVC, animated: true)
     }
     
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailField {
+            passwordField.becomeFirstResponder()
+        }
+        else if textField == passwordField {
+            loginButtonTapped()
+        }
+        
+        return true
+    }
 }

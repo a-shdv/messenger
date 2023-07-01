@@ -16,7 +16,8 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Logo")
+        imageView.image = UIImage(systemName: "person")
+        imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -86,7 +87,7 @@ class RegisterViewController: UIViewController {
     private let registerButton: UIButton = {
         let loginButton = UIButton()
         loginButton.setTitle("Зарегистрироваться", for: .normal)
-        loginButton.backgroundColor = .link
+        loginButton.backgroundColor = .systemGreen
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 12
         loginButton.layer.masksToBounds = true
@@ -101,6 +102,13 @@ class RegisterViewController: UIViewController {
         
         view.backgroundColor =  .white
         
+        emailField.delegate = self
+        usernameField.delegate = self
+        passwordField.delegate = self
+        confirmPasswordField.delegate = self
+        
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
@@ -109,6 +117,14 @@ class RegisterViewController: UIViewController {
         scrollView.addSubview(confirmPasswordField)
         scrollView.addSubview(registerButton)
         
+        imageView.isUserInteractionEnabled = true
+        scrollView.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(didTapChangeProfilePic))
+//        gesture.numberOfTouchesRequired = 1
+        
+        imageView.addGestureRecognizer(gesture)
     }
     
     override func viewDidLayoutSubviews() {
@@ -127,9 +143,9 @@ class RegisterViewController: UIViewController {
                                   height: 52)
         
         usernameField.frame = CGRect(x: 30,
-                                  y:  emailField.bottom + 10,
-                                  width: scrollView.width - 60,
-                                  height: 52)
+                                     y:  emailField.bottom + 10,
+                                     width: scrollView.width - 60,
+                                     height: 52)
         
         passwordField.frame = CGRect(x: 30,
                                      y:  usernameField.bottom + 10,
@@ -137,14 +153,57 @@ class RegisterViewController: UIViewController {
                                      height: 52)
         
         confirmPasswordField.frame = CGRect(x: 30,
-                                     y:  passwordField.bottom + 10,
-                                     width: scrollView.width - 60,
-                                     height: 52)
+                                            y:  passwordField.bottom + 10,
+                                            width: scrollView.width - 60,
+                                            height: 52)
         
         registerButton.frame = CGRect(x: 30,
-                                   y:  confirmPasswordField.bottom + 10,
-                                   width: scrollView.width - 60,
-                                   height: 52)
+                                      y:  confirmPasswordField.bottom + 10,
+                                      width: scrollView.width - 60,
+                                      height: 52)
     }
     
+    @objc private func registerButtonTapped() {
+        guard let email = emailField.text,
+              let password = passwordField.text,
+              let confirmPassword = confirmPasswordField.text,
+              !email.isEmpty, !password.isEmpty, !confirmPassword.isEmpty
+        else {
+            alertUserRegisterError()
+            return
+        }
+        
+    }
+    
+    @objc private func didTapChangeProfilePic() {
+        print("test")
+    }
+    
+    func alertUserRegisterError() {
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: "Пожалуйста, заполните все поля",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailField {
+            usernameField.becomeFirstResponder()
+        }
+        else if textField == usernameField {
+            passwordField.becomeFirstResponder()
+        }
+        else if textField == passwordField {
+            confirmPasswordField.becomeFirstResponder()
+        }
+        else if textField == confirmPasswordField {
+            registerButtonTapped()
+        }
+        
+        return true
+    }
 }

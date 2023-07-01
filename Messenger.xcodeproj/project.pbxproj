@@ -13,6 +13,7 @@
 		322AD5A02A5085F50095CE9C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AD59F2A5085F50095CE9C /* VideoPlayerViewController.swift */; };
 		322AD5A22A5086370095CE9C /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AD5A12A5086370095CE9C /* NewConversationViewController.swift */; };
 		322AD5A42A50864D0095CE9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AD5A32A50864D0095CE9C /* ProfileViewController.swift */; };
+		322AD5A72A50908D0095CE9C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AD5A62A50908D0095CE9C /* Extensions.swift */; };
 		329EB6772A506ED800BB07AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329EB6762A506ED800BB07AC /* AppDelegate.swift */; };
 		329EB6792A506ED800BB07AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329EB6782A506ED800BB07AC /* SceneDelegate.swift */; };
 		329EB67B2A506ED800BB07AC /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329EB67A2A506ED800BB07AC /* ConversationViewController.swift */; };
@@ -28,6 +29,7 @@
 		322AD59F2A5085F50095CE9C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		322AD5A12A5086370095CE9C /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		322AD5A32A50864D0095CE9C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		322AD5A62A50908D0095CE9C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		329EB6732A506ED800BB07AC /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		329EB6762A506ED800BB07AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		329EB6782A506ED800BB07AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				329EB6762A506ED800BB07AC /* AppDelegate.swift */,
 				329EB6782A506ED800BB07AC /* SceneDelegate.swift */,
+				322AD5A62A50908D0095CE9C /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -65,6 +68,15 @@
 				329EB6812A506ED900BB07AC /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		322AD5A52A5087180095CE9C /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				322AD5992A5085990095CE9C /* LoginViewController.swift */,
+				322AD59B2A5085A50095CE9C /* RegisterViewController.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		329EB66A2A506ED800BB07AC = {
@@ -116,8 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				329EB67A2A506ED800BB07AC /* ConversationViewController.swift */,
-				322AD5992A5085990095CE9C /* LoginViewController.swift */,
-				322AD59B2A5085A50095CE9C /* RegisterViewController.swift */,
+				322AD5A52A5087180095CE9C /* Authorization */,
 				322AD59D2A5085DB0095CE9C /* PhotoViewerViewController.swift */,
 				322AD59F2A5085F50095CE9C /* VideoPlayerViewController.swift */,
 				322AD5A12A5086370095CE9C /* NewConversationViewController.swift */,
@@ -209,6 +220,7 @@
 				322AD5A22A5086370095CE9C /* NewConversationViewController.swift in Sources */,
 				329EB67B2A506ED800BB07AC /* ConversationViewController.swift in Sources */,
 				322AD5A02A5085F50095CE9C /* VideoPlayerViewController.swift in Sources */,
+				322AD5A72A50908D0095CE9C /* Extensions.swift in Sources */,
 				329EB6772A506ED800BB07AC /* AppDelegate.swift in Sources */,
 				322AD5A42A50864D0095CE9C /* ProfileViewController.swift in Sources */,
 				329EB6792A506ED800BB07AC /* SceneDelegate.swift in Sources */,
